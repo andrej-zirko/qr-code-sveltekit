@@ -72,7 +72,7 @@
 	$: if (jsonInput || errorCorrectionLevel) {
         form = null; // Reset form to null or its initial state
     }
-	
+
 	// Auto-format the JSON input on mount
 	onMount(() => {
 		jsonInput = JSON.stringify(JSON.parse(jsonInput), null, 2);
@@ -136,7 +136,7 @@
 	{/if}
 
 	{#if form?.compressedRatio}
-		<div><p>The compression ration is {form.compressedRatio}</p></div>
+		<div><p>The compression ratio is {form.compressedRatio}</p></div>
 	{/if}
 
 	{#if form?.vcQR}
