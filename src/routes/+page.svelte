@@ -69,12 +69,18 @@
 		}
 	};
 
+	$: if (jsonInput || errorCorrectionLevel) {
+        form = null; // Reset form to null or its initial state
+    }
+	
 	// Auto-format the JSON input on mount
 	onMount(() => {
 		jsonInput = JSON.stringify(JSON.parse(jsonInput), null, 2);
 	});
 
 	const prefillData = (data) => {
+		form = null;
+
 		jsonInput = JSON.stringify(data, null, 2);
 		validateJson();
 	};
@@ -91,8 +97,8 @@
 		}}
 	>
 		<div class="button-container">
-			<button on:click={() => prefillData(vc)}>Prefill with VC</button>
-			<button on:click={() => prefillData(minifiedVc)}>Prefill with Minified VC</button>
+			<button type="button" on:click={() => prefillData(vc)}>Prefill with VC</button>
+			<button type="button" on:click={() => prefillData(minifiedVc)}>Prefill with Minified VC</button>
 		</div>
 
 		<textarea
@@ -116,7 +122,7 @@
 			</select>
 		</div>
 		<div class="button-container">
-			<button>Issue Credential</button>
+			<button type="submit">Issue Credential</button>
 		</div>
 	</form>
 
